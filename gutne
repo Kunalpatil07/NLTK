@@ -1,0 +1,14 @@
+inverted_index = {}
+
+for book_name in file_names:
+    for word in gutenberg.words(book_name):
+        if word in inverted_index:
+            posting_list = inverted_index[word]
+            if book_name in posting_list:
+                posting_list[book_name] = posting_list[book_name] + 1
+            else:
+                posting_list[book_name] = 1
+        else:
+            inverted_index[word] = {book_name:1}
+        print("\n inverted index : \n ",inverted_index)
+#print("\n posting list is : \n", posting_list)
